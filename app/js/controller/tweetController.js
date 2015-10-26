@@ -1,17 +1,32 @@
 angular.module('tweetApp', [])
   .controller('tweetController', tweetController)
 
-// tweetController.$inject = ['$scope', 'socket']
+// tweetController.$inject = ['socket'];
 
-function tweetController($scope, socket){
-  self = this;
+function tweetController($scope) {
+
+  var self = this;
+  self.title = "Twitterappy";
+
+  var socket = io('http://localhost:3000');
   self.tweets = [];
-  console.log(self)
-  socket.on('tweets', function (data) {
-    console.log(self)
-      self.tweets = self.tweets.concat(data);
-      console.log(self)
+
+  socket.on('tweet', function(data) {
+    self.tweets.push(data);
+    $scope.$apply();
+
+
+
+    // for(var i = 0; i < self.tweets.length; i++){
+
+    //   self.tweets[i].text
+    // }
+
+
+    
   });
+
+  
 
 
 }

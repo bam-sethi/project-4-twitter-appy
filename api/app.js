@@ -26,14 +26,18 @@ var twitter = new Twit({
   access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var stream = twitter.stream('statuses/filter', { track: 'london' } );
+var stream = twitter.stream('statuses/filter', { track: 'feminist' });
 
 io.on('connect', function (socket){
   stream.on('tweet', function (tweet){
-    var data = {};
-    data.text = tweet.text;
+    // var data = {};
+    // data.text = tweet.text;
+    // socket.emit('tweet', data);
+    // console.log(data);
+
+    console.log(tweet);
+    var data = tweet;
     socket.emit('tweet', data);
-    console.log(data);
   });
 });
 
