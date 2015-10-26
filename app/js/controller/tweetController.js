@@ -17,10 +17,10 @@ function tweetController($scope) {
 
 
 
-    // for(var i = 0; i < self.tweets.length; i++){
+    for(var i = 0; i < self.tweets.length; i++){
 
-    //   self.tweets[i].text
-    // }
+      console.log(self.tweets[i].text)
+    }
 
 
     
