@@ -1,10 +1,19 @@
-var express = require('express')
+var express = require('express');
+var http = require('http'); 
 var app = express();
 var morgan = require('morgan')
 var bodyParser = require('body-parser');
 var server = require('http').createServer(app)
 var port = process.env.PORT || 3000;
+var server    = app.listen(3000);
 
+
+
+// var express = require('express'),
+// var app = express();
+// var server = http.createServer(app);
+
+server.listen(3000);
 
 // var routes = require('./config/routes');
 
@@ -13,11 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(routes);
 
-//ROUTE
-app.get('/', function (req, res){
-  // res.json('res', res)
-   console.log(res.json())
-});
+app.use(express.static(__dirname  + '../app'));
 
 
 
@@ -25,10 +30,15 @@ server.listen(port, function(){
   console.log('Your sever is listening on port', port)
 });
 
+var io = require('socket.io')(server)
+// http.listen(server)
+//   serveClient: (process.env === 'production') ? false : true,
+//   path: '/'
+// });
 
 
 //TWITTER WEB SOCKET
-var io = require('socket.io')(server);
+// var io = require('socket.io')(server);
 var Twit = require('twit');
 
 var twitter = new Twit({
@@ -39,21 +49,25 @@ var twitter = new Twit({
 });
 
 
-var stream = twitter.stream('statuses/filter', { track: 'snowden' } );
+
+
+
 //for multiple do { track: '[ josh, yao]'}
+// module.exports = function(io){}
+// var socket = io.connect('http://localhost:9000')
+  var stream = twitter.stream('statuses/filter', { track: 'snowden' } );
 
 io.on('connect', function (socket){
-  stream.on('tweet', function (tweet){
+  stream.on('tweets', function (tweets){
     var data = {};
-    data.name = tweet.user.name;
-    // data.screen_name = tweet.user.screen_name;
-    data.text = tweet.text;
-    // data.user_profile_image = tweet.user.profile_image_url;
-    socket.emit('tweet', data);
+    data.name = tweets.user.name;
+    // data.screen_name = tweets.user.screen_name;
+    data.text = tweets.text;
+    // data.user_profile_image = tweets.user.profile_image_url;
+    socket.emit('tweets', data);
   });
   console.log(data)
 });
-
 
 
 
