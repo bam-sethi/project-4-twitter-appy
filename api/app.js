@@ -1,13 +1,15 @@
 var express = require('express');
-// var cors = require('cors');
+var cors = require('cors');
 var app = express();
 var morgan = require('morgan')
 var bodyParser = require('body-parser');
-var server = require('http').createServer(app)
+var http = require('http');
+var server = http.createServer(app)
 var port = process.env.PORT || 3000;
 // var server    = app.listen(3000);
+var request = require('request');
 
-// app.use(cors());
+app.use(cors());
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -26,22 +28,31 @@ var twitter = new Twit({
   access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var stream = twitter.stream('statuses/filter', { track: 'feminist' });
+var stream = twitter.stream('statuses/filter', { track: 'javascript', filter_level: 'low', place: 'London' });
 
 io.on('connect', function (socket){
   stream.on('tweet', function (tweet){
-    // var data = {};
-    // data.text = tweet.text;
-    // socket.emit('tweet', data);
-    // console.log(data);
+    var tweetText = tweet.text;
+    request("http://www.tweetsentimentapi.com/api/?key=7f8e61099ff5c865cd5f736e57d76638905b9b0d&text=" + tweetText, function(error, response, body){
+      if(!error && response.statusCode == 200){
+        var sentimentBody = JSON.parse(body)
+        var tweetAndSentiment = { 
+          sentiment: sentimentBody,
+          tweetText: tweetText 
+        };
 
-    console.log(tweet);
-    var data = tweet;
-    socket.emit('tweet', data);
-  });
+        socket.emit('tweet', tweetAndSentiment)
+      }
+    })    
+  })
+
 });
 
+
+
+
+
 server.listen(port, function(){
-  console.log('Your server is listening on port', port)
+  console.log('Your server is listening on port', port);
 });
 
