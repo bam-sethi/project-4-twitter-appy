@@ -17,12 +17,16 @@
   <h1>Twit-Tweet-Doom</h1>
   <h2>{{ tweetData.title }}</h2>
 
-  <ul id="tweet-container">
-    <li ng-repeat="tweeto in tweetData.tweets">
-      {{ tweeto.text }}
-    </li>
-  </ul>
 
+<!--   <ul>
+    <li ng-repeat="sentiment in tweetData">
+      {{ sentiment.data }}
+    </li>
+  </ul> -->
+
+<!--   <canvas id="myChart" width="400" height="400" style="red"></canvas>
+
+ -->
   <canvas id="doughnut" class="chart chart-doughnut"
   chart-data="data" chart-labels="labels">
   </canvas> 
