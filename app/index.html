@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Twit-Tweet-Doom</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
@@ -16,10 +17,8 @@
 <body ng-controller="tweetController as tweetData">
   <h1>Twit-Tweet-Doom</h1>
   <h2>{{ tweetData.title }}</h2>
-
-
-
-
+  
+<!-- 
   <ul>
   <li>{{ data }}</li>
   <li>{{ label }}</li>
@@ -28,16 +27,12 @@
     <ul>
   <li> Positive: {{ positiveData.length }}</li>
   <li> Negative: {{ negativeData.length }}</li>
-  </ul>
+  </ul> -->
 
-<!--   <canvas id="myChart" width="400" height="400" style="red"></canvas>
 
- -->
-
- <h3>{{ tweetData.myName }}</h3>
-<!--   <canvas id="doughnut" class="chart chart-doughnut"
-  chart-data="{{ tweetData.sentimentScore }}" chart-labels="{{ tweetData.sentimentAnalysis }}">
-  </canvas>  -->
+<canvas id="doughnut" class="chart chart-doughnut"
+  chart-data="data" chart-labels="labels">
+</canvas>
   
 
 
