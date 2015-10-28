@@ -29,47 +29,40 @@ var twitter = new Twit({
 });
 
 
-var stream = twitter.stream('statuses/filter', { track: 'london', filter_level: 'low', locations: "51.286839, -0.51035, 51.507702, -0.12797" });
-
-
-//grab 50 tweets and send up every 3 seconds?
-//
+var stream = twitter.stream('statuses/filter', { track: 'politics', filter_level: 'low', locations: "51.286839, -0.51035, 51.507702, -0.12797" });
 
 var twitterArray = [] 
 
 io.on('connect', function (socket){
   stream.on('tweet', function (tweet){
-    var tweetText = tweet.text;
-    request("http://www.tweetsentimentapi.com/api/?key=7f8e61099ff5c865cd5f736e57d76638905b9b0d&text=" + tweetText, function(error, response, body){
+
+    var tweetText = tweet.text.replace(/[^\w\s]/gi, '');
+
+    request("http://www.tweetsentimentapi.com/api/?
+      key=7f8e61099ff5c865cd5f736e57d76638905b9b0d&text=" + 
+      tweetText, function(error, response, body){
+
       if(!error && response.statusCode == 200){
+
         var sentimentBody = JSON.parse(body);
         var tweetAndSentiment = { 
           sentiment: sentimentBody,
           tweetText: tweetText 
         };
 
-        //add each tweet to array
         twitterArray.push(tweetAndSentiment)
 
-        // setTimeout(function(){
-          if (twitterArray.length < 5){
+        if (twitterArray.length < 20){
+          setInterval(function(){
             console.log(tweetAndSentiment)
             socket.emit('tweet', tweetAndSentiment)
-          } 
-        //   twitterArray = []
-        // }, 5000);
-
+          }, 10000)
+        } 
       }
     })    
   })
-
+  
 });
-
-
-//emit the tweets until the length of the array is 20
-//then clear out the tweets
-//and repeat every few secs
-
 
 
 

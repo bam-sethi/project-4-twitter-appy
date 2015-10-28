@@ -18,18 +18,23 @@ function tweetController($scope, $http, $timeout) {
   socket.on('tweet', function(tweet) {
 
     $scope.data.push(tweet.sentiment.score);    
-    $scope.sentimentScore = $scope.data;
+    // $scope.sentimentScore = $scope.data;
+    console.log(tweet.tweetText)
 
     $scope.labels.push(tweet.sentiment.sentiment);
-    $scope.sentimentAnalysis = $scope.labels;
+    // $scope.sentimentAnalysis = $scope.labels;
 
     $scope.$apply()
-    console.log($scope.labels)
 
+    var sentimentScores = $scope.data
+
+    for(var i = 0; i < sentimentScores.length; i ++){
+
+      var average = (Math.abs(sentimentScores[i]) * 10) / sentimentScores.length;
+      console.log(average)
+
+    }
   });
-
-    // $scope.labels = ['fuck', 'u']
-    // $scope.data = [100, 200]
 
 
 
