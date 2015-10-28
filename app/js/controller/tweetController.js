@@ -12,10 +12,11 @@ function tweetController($scope, $http) {
 
   $scope.data = []
   $scope.label = []
-  // $scope.positiveData = []
-  // $scope.negativeData = []
+  $scope.positiveData = []
+  $scope.negativeData = []
 
   socket.on('tweet', function(tweet) {
+    
     $scope.data.push(tweet.sentiment.score);    
     $scope.sentimentScore = $scope.data;
 
@@ -23,26 +24,29 @@ function tweetController($scope, $http) {
     $scope.sentimentAnalysis = $scope.label;
 
     $scope.$apply()
-    // console.log($scope.negativeData)
 
-    // var sentiment = tweet.sentiment.sentiment
+    this is looping over the array x number of times so is duplicating entries
+    for(var i = 0; i < $scope.label.length; i++){
+      if($scope.label[i] === "positive"){
 
-    // if($scope.label === positive){
-    //   console.log(sentiment)
-    // }
+        $scope.positiveData.push($scope.label[i])
+        console.log($scope.positiveData)
 
+      } else if($scope.label[i] === "negative"){
 
-
+        $scope.negativeData.push($scope.label[i])
+        console.log($scope.negativeData)
+      }
+    }
   });
+
+
+
 
   //if the value of scope.data is neg push in to one array, if neg push in to other
 
 
-    //or something like this?
-  // $scope.data = {
-  //   data: sentimentScore,
-  //   label
-  // }
+
 
   //need to basically do this, push the score in to the data array that chart js requires
   //and push the label in, can i do this as an object
@@ -51,21 +55,6 @@ function tweetController($scope, $http) {
 
 
 
-
-    // $scope.data = [10, 10]
-    // $scope.labels = ["pos", "neg"]
-  //if sentiment.score < 0 
-    // console.log(sentiment)
-    // for(var i = -1; i < sentiment.length; i ++ ){
-    //   if(i < 0){
-    //     $scope.labels = ["negative"]
-    //     console.log($scope.labels)
-    //   } else if( i > 0 ){
-    //     $scope.labels = ["positive"]
-    //     console.log($scope.labels)
-    //   }
-    // }
-  
 
 
 
