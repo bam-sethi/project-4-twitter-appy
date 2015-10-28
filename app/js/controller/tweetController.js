@@ -1,4 +1,4 @@
-angular.module('tweetApp', ['chart.js'])
+angular.module('tweetApp', [])
   .controller('tweetController', tweetController)
 
 // tweetController.$inject = ['socket'];
@@ -12,18 +12,30 @@ function tweetController($scope, $http) {
 
   $scope.data = []
   $scope.label = []
+  // $scope.positiveData = []
+  // $scope.negativeData = []
 
   socket.on('tweet', function(tweet) {
     $scope.data.push(tweet.sentiment.score);    
-    // $scope.sentimentScore = $scope.data;
+    $scope.sentimentScore = $scope.data;
 
     $scope.label.push(tweet.sentiment.sentiment);
-    // $scope.sentimentAnalysis = $scope.label;
-    // console.log($scope.label)
+    $scope.sentimentAnalysis = $scope.label;
+
+    $scope.$apply()
+    // console.log($scope.negativeData)
+
+    // var sentiment = tweet.sentiment.sentiment
+
+    // if($scope.label === positive){
+    //   console.log(sentiment)
+    // }
+
+
+
   });
 
-
-
+  //if the value of scope.data is neg push in to one array, if neg push in to other
 
 
     //or something like this?
@@ -36,9 +48,6 @@ function tweetController($scope, $http) {
   //and push the label in, can i do this as an object
   //can i make the data that chart recieves an object
   //where does chart js begin and where does angular-chart-js begin?
-
-  // $scope.data = [tweet.sentiment.score]
-  // $scope.label = [tweet.sentiment.sentiment]
 
 
 

@@ -28,7 +28,9 @@ var twitter = new Twit({
   access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var stream = twitter.stream('statuses/filter', { track: 'javascript', filter_level: 'low', place: 'London' });
+// london location: '51.50, 0.12'
+
+var stream = twitter.stream('statuses/filter', { track: 'london', filter_level: 'low',  });
 
 io.on('connect', function (socket){
   stream.on('tweet', function (tweet){
@@ -40,7 +42,7 @@ io.on('connect', function (socket){
           sentiment: sentimentBody,
           tweetText: tweetText 
         };
-
+        console.log(tweetAndSentiment)
         socket.emit('tweet', tweetAndSentiment)
       }
     })    
