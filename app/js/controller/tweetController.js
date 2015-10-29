@@ -3,46 +3,48 @@ angular.module('tweetApp', ['chart.js'])
 
 // tweetController.$inject = ['socket'];
 
-function tweetController($scope, $http) {
+function tweetController($scope, $http, $timeout) {
 
   var self = this;
   self.title = "Twitterappy";
 
   var socket = io('http://localhost:3000');
-  self.tweets = [];
+
+  $scope.data = []
+  $scope.labels = []
+  // $scope.positiveData = []
+  // $scope.negativeData = []
 
   socket.on('tweet', function(tweet) {
-    console.log(tweet);
-    console.log(tweet.sentiment.score)
+
+    $scope.data.push(tweet.sentiment.score);    
+    $scope.sentimentScore = $scope.data;
+    // console.log(tweet.tweetText)
+    $scope.twitterText = tweet.tweetText
+
+    $scope.labels.push(tweet.sentiment.sentiment);
+    $scope.sentimentAnalysis = $scope.labels;
+
+    $scope.$apply()
   });
+    // var sentimentScores = $scope.data
+
+    // var average = 0
+    // for(var i = 0; i < sentimentScores.length; i ++){
+    //   average += (Math.abs(sentimentScores[i]) * 10)
+    //   var av = average / sentimentScores.length
+    //   console.log(av)
+    // }
 
 
 
 
-  // self.labels = ["pos", "neg"]
-  // self.data = [100, 400]
+  //if the value of scope.data is neg push in to one array, if neg push in to other
 
+  //need to basically do this, push the score in to the data array that chart js requires
+  //and push the label in, can i do this as an object
+  //can i make the data that chart recieves an object
+  //where does chart js begin and where does angular-chart-js begin?
 
 }
 
-
-
-    // console.log(tweet)
-    // console.log(tweet)
-    // var tweetText = tweet.text.replace(/[^\w\s]/gi, '');
-    // var sentimentAPI = "7f8e61099ff5c865cd5f736e57d76638905b9b0d";
-    // // console.log(tweetText)
-    // // var jsonData = JSON.stringify(tweetText)
-    // var transformedTweet = encodeURI(tweetText);
-    // // console.log(transformedTweet);
-    // var url = "http://www.tweetsentimentapi.com/api/?key=" + sentimentAPI + "&text=" + transformedTweet
-    // // console.log(jsonData)
-    
-    // $http.get(url)
-    //   .success(function(response){
-    //     console.log(response)
-    //     // self.tweets.push(data);
-    //     // $scope.$apply();
-    //     }, function (response){
-    //       console.log(response)
-    // })

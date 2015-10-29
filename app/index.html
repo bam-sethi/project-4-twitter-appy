@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Twit-Tweet-Doom</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
@@ -14,18 +15,23 @@
 
 </head>
 <body ng-controller="tweetController as tweetData">
-  <h1>Twit-Tweet-Doom</h1>
-  <h2>{{ tweetData.title }}</h2>
+  <h1>TwittterDoom</h1>
 
-  <ul id="tweet-container">
-    <li ng-repeat="tweeto in tweetData.tweets">
-      {{ tweeto.text }}
-    </li>
+  <i class="fa fa-smile-o"></i>
+  <ul>
+  <li>{{ twitterText }}</li>
+  <li>{{ label }}</li>
   </ul>
 
-  <canvas id="doughnut" class="chart chart-doughnut"
+<!--     <ul>
+  <li> Positive: {{ positiveData.length }}</li>
+  <li> Negative: {{ negativeData.length }}</li>
+  </ul>
+ -->
+
+<canvas id="doughnut" class="chart chart-doughnut"
   chart-data="data" chart-labels="labels">
-  </canvas> 
+</canvas>
   
 
 
