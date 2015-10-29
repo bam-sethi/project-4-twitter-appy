@@ -59,7 +59,7 @@ io.on('connect', function (socket){
         };
         twitterArray.push(tweetAndSentiment)
 
-        if (twitterArray.length < 100){
+        if (twitterArray.length < 20){
           // setInterval(function(){
             // console.log(tweetAndSentiment)
             console.log(twitterArray.length)

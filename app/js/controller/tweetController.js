@@ -10,29 +10,28 @@ function tweetController($http, $scope) {
 
   var socket = io('http://localhost:3000');
 
-  self.score = []
+  // self.score = []
   self.negArray = []
   self.posArray = []
+  self.sentimentArray = []
 
   socket.on('tweet', function(tweet) {
 
-    var sentimentScore = tweet.sentiment.score   
-    self.score.push(sentimentScore)
+    var sentimentObject = tweet
+    self.sentimentArray.push(sentimentObject)
+    console.log(self.sentimentArray)
 
-    for(var j = 0; j < self.score.length; j ++){
-      var num = self.score[j]
-      if(num < 0){
-        self.negArray.push(num)
-        // console.log(self.negArray)
-        
-      } else if(num > 0){
-        self.posArray.push(num)
 
-      }
-      $scope.$apply()
+    var sentimentScore = tweet.sentiment.score  
+
+    if(sentimentScore < 0){
+      self.negArray.push(tweet)
+
+    } else if(sentimentScore > 0) {
+      self.posArray.push(tweet)
     }
-
-        // console.log(self.posArray)
+    
+    $scope.$apply()
 
   });
 
