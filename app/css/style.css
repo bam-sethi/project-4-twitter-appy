@@ -1,5 +1,30 @@
 body{
-  background-color: black;
-  color: white;
+/*  background-color: black;
+  color: white;*/
   font-family: 'Lato', sans-serif;
+}
+/*#positive-cats{
+  display: inline-block;
+}
+#negative-cats{
+  display: inline-block;
+}*/
+.cat-div{
+  display: inline-block;
+  width:45%;
+  height:500px;
+  border: 1px solid black;
+  margin: 10px;
+  overflow: scroll;
+}
+.cat{
+  width: 30px;
+  height: 30px;
+}
+ul {
+  column-count: 2;
+  column-gap: 0;
+}
+li {
+  display: inline-block;
 }

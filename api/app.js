@@ -29,7 +29,7 @@ var twitter = new Twit({
 });
 
 //LONDON
-var stream = twitter.stream('statuses/filter', { track: 'javascript', filter_level: 'low', locations: "51.286839, -0.51035, 51.507702, -0.12797" });
+var stream = twitter.stream('statuses/filter', { track: 'london', filter_level: 'low', locations: "51.286839, -0.51035, 51.507702, -0.12797" });
 
 // //NEW YORK 40.477421, -74.258904 40.71455, -74.007118
 // var streamNY = twitter.stream('statuses/filter', { track: 'New York', filter_level: 'low', locations: "40.477421, -74.258904, 40.71455, -74.007118" });
@@ -57,11 +57,9 @@ io.on('connect', function (socket){
           sentiment: sentimentBody,
           tweetText: tweetText 
         };
-        console.log(tweetAndSentiment)
-
         twitterArray.push(tweetAndSentiment)
 
-        if (twitterArray.length < 20){
+        if (twitterArray.length < 100){
           // setInterval(function(){
             // console.log(tweetAndSentiment)
             console.log(twitterArray.length)
