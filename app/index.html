@@ -13,39 +13,38 @@
 
 </head>
 <body ng-controller="tweetController as tweetData">
-  <header>
+<!--   <header>
     <img id="head-image" src="public/images/logo.png">
-  </header>
+  </header> -->
 
   <ul>
     <div class="cat-div" id="negative-cats">
       <li ng-repeat="tweet in tweetData.negArray track by $index">
         <img class="cat"
           src="public/images/grumpy.png" 
-          ng-mouseenter="hover=true" 
-          ng-mouseleave="hover=false"
-          ng-class="{grumpy: hover}">
+          ng-class="{grumpy: hover}"
+          ng-click="expandTweet(tweet)">
         <p id="tweet-text" 
-          ng-show="hover"
-          ng-bind-html="tweet.tweetText | linky">
+          ng-show="tweet.showTweet">
           {{ tweet.tweetText }}
         </p>
       </li>
     </div>
     <div class="cat-div" id="postive-cats">
-      <li ng-repeat="tweet in tweetData.posArray track by $index">
+      <li ng-repeat="tweeto in tweetData.posArray track by $index">
         <img class="cat" 
           src="public/images/haps.png" 
-          ng-mouseenter="hover=true" 
-          ng-mouseleave="hover=false" 
-          ng-class="{happy: hover}">
+          ng-class="{happy: hover}"
+          ng-click="expandPosTweet(tweeto)">
         <p id="tweet-text" 
-          ng-show="hover" >
-          {{ tweet.tweetText }}
+          ng-show="tweeto.showPosTweet" >
+          {{ tweeto.tweetText }}
         </p>
       </li>
     </div>
   </ul>
+
+  <!-- <h4 ng-if="self.negArray.length > self.posArray.length">bad vibezzz today</h4> -->
 
 </body>
 </html>

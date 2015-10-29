@@ -37,27 +37,10 @@ li {
 #tweet-text{
   position: absolute;
   color: white;
-  z-index: 10;
-  background-color: lightgrey
+  z-index: 2;
+  background-color: lightgrey;
 }
-/*.red{
-  background-color: red;
-  color: red;
-  -ms-transform: rotate(-360deg);
-  -webkit-transform: rotate(-360deg);
-  -moz-transform: rotate(-360deg);
-  -o-transform: rotate(-360deg);
-  transform: rotate(-360deg);
-}
-.green{
-  background-color: green;
-  color:green;
-  -ms-transform: rotate(-360deg);
-  -webkit-transform: rotate(-360deg);
-  -moz-transform: rotate(-360deg);
-  -o-transform: rotate(-360deg);
-  transform: rotate(-360deg);
-}*/
+
 @-webkit-keyframes grumpy /* Safari and Chrome */ {
   from {
     -ms-transform: rotate(0deg);
@@ -91,7 +74,7 @@ li {
   }
 }
 .grumpy {
-  background: url(../public/images/grumpy-reaction.png);
+  /*background: url(../public/images/grumpy-reaction.png);*/
   -webkit-animation: grumpy 2s linear infinite;
   -moz-animation: grumpy 2s linear infinite;
   -ms-animation: grumpy 2s linear infinite;
@@ -131,7 +114,7 @@ li {
   }
 }
 .happy {
-  background: url(../public/images/happy-reaction.png);
+  /*background: url(../public/images/happy-reaction.png);*/
   -webkit-animation: happy 2s linear infinite;
   -moz-animation: happy 2s linear infinite;
   -ms-animation: happy 2s linear infinite;

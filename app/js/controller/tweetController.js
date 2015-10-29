@@ -27,9 +27,42 @@ function tweetController($http, $scope) {
       self.posArray.push(tweet)
     }
 
-    $scope.$apply()
+    $scope.expandTweet = function(tweet){
+      tweet.showTweet = !tweet.showTweet
+      for (var i = 0; i < self.negArray.length; i++){
+        var currentTweet = self.negArray[i];
+        if (currentTweet != tweet){
+          currentTweet.showTweet = false;
+        } 
+      }
+    }
 
+    $scope.expandPosTweet = function(tweeto){
+      tweeto.showPosTweet = !tweeto.showPosTweet
+      for (var i = 0; i < self.posArray.length; i++){
+        var thisTweet = self.posArray[i];
+        if (thisTweet != tweeto){
+          thisTweet.showPosTweet = false;
+        } 
+      }
+    }
+
+    $scope.$apply()
   });
+
+
+
+
+
+
+  //this needs to happen after
+  // also have a button that resets the socket?
+  // console.log(self.negArray.length)
+  // if(self.negArray.length > self.posArray.length){
+  //   console.log("bad vibes")
+  // } else {
+  //   console.log("goodvibes")
+  // }
 
 }
 
