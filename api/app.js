@@ -53,12 +53,10 @@ io.on('connect', function (socket){
         if (twitterArray.length < 100){
             console.log(twitterArray.length)
             socket.emit('tweet', tweetAndSentiment)
-
-        } 
+        };
       }
     })    
   })
-
 });
 
 
