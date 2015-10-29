@@ -3,12 +3,17 @@ body{
   color: white;*/
   font-family: 'Lato', sans-serif;
 }
-/*#positive-cats{
-  display: inline-block;
+#head-image{
+  width: 20%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+#positive-cats{
+margin: 0;
 }
 #negative-cats{
-  display: inline-block;
-}*/
+margin: 0;
+}
 .cat-div{
   display: inline-block;
   width:45%;
@@ -16,10 +21,11 @@ body{
   border: 1px solid black;
   margin: 10px;
   overflow: scroll;
+  position: relative;
 }
 .cat{
-  width: 30px;
-  height: 30px;
+  width: 100px;
+  height: 100px;
 }
 ul {
   column-count: 2;
@@ -28,3 +34,106 @@ ul {
 li {
   display: inline-block;
 }
+#tweet-text{
+  position: absolute;
+  color: white;
+  z-index: 10;
+  background-color: lightgrey
+}
+/*.red{
+  background-color: red;
+  color: red;
+  -ms-transform: rotate(-360deg);
+  -webkit-transform: rotate(-360deg);
+  -moz-transform: rotate(-360deg);
+  -o-transform: rotate(-360deg);
+  transform: rotate(-360deg);
+}
+.green{
+  background-color: green;
+  color:green;
+  -ms-transform: rotate(-360deg);
+  -webkit-transform: rotate(-360deg);
+  -moz-transform: rotate(-360deg);
+  -o-transform: rotate(-360deg);
+  transform: rotate(-360deg);
+}*/
+@-webkit-keyframes grumpy /* Safari and Chrome */ {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes grumpy {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.grumpy {
+  background: url(../public/images/grumpy-reaction.png);
+  -webkit-animation: grumpy 2s linear infinite;
+  -moz-animation: grumpy 2s linear infinite;
+  -ms-animation: grumpy 2s linear infinite;
+  -o-animation: grumpy 2s linear infinite;
+  animation: grumpy 2s linear infinite;
+
+@-webkit-keyframes happy /* Safari and Chrome */ {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes happy {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.happy {
+  background: url(../public/images/happy-reaction.png);
+  -webkit-animation: happy 2s linear infinite;
+  -moz-animation: happy 2s linear infinite;
+  -ms-animation: happy 2s linear infinite;
+  -o-animation: happy 2s linear infinite;
+  animation: happy 2s linear infinite;

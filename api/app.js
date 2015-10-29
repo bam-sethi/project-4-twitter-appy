@@ -29,7 +29,7 @@ var twitter = new Twit({
 });
 
 //LONDON
-var stream = twitter.stream('statuses/filter', { track: 'london', filter_level: 'low', locations: "51.286839, -0.51035, 51.507702, -0.12797" });
+var stream = twitter.stream('statuses/filter', { track: '[fml, ACAB, rentstrike, rentcap, london rent, blacklivesmatter, politics, fully automated luxury communism, sorrynotsorry]', filter_level: 'low', locations: "51.286839, -0.51035, 51.507702, -0.12797" });
 
 // //NEW YORK 40.477421, -74.258904 40.71455, -74.007118
 // var streamNY = twitter.stream('statuses/filter', { track: 'New York', filter_level: 'low', locations: "40.477421, -74.258904, 40.71455, -74.007118" });
@@ -45,7 +45,8 @@ var twitterArray = []
 io.on('connect', function (socket){
   stream.on('tweet', function (tweet){
 
-    var tweetText = tweet.text.replace(/[^\w\s]/gi, '');
+    var tweetText = tweet.text;
+    // .replace(/[^\w\s]/gi, '');
 
     request("http://www.tweetsentimentapi.com/api/?key=7f8e61099ff5c865cd5f736e57d76638905b9b0d&text=" + 
       tweetText, function(error, response, body){
@@ -59,7 +60,7 @@ io.on('connect', function (socket){
         };
         twitterArray.push(tweetAndSentiment)
 
-        if (twitterArray.length < 20){
+        if (twitterArray.length < 100){
           // setInterval(function(){
             // console.log(tweetAndSentiment)
             console.log(twitterArray.length)

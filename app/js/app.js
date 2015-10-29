@@ -1,1 +1,1 @@
-angular.module('tweetApp', [])
+angular.module('tweetApp', ['ngSanitize'])

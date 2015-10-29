@@ -6,11 +6,8 @@ angular.module('tweetApp', [])
 function tweetController($http, $scope) {
 
   var self = this;
-  self.title = "Twitterappy";
-
   var socket = io('http://localhost:3000');
 
-  // self.score = []
   self.negArray = []
   self.posArray = []
   self.sentimentArray = []
@@ -21,7 +18,6 @@ function tweetController($http, $scope) {
     self.sentimentArray.push(sentimentObject)
     console.log(self.sentimentArray)
 
-
     var sentimentScore = tweet.sentiment.score  
 
     if(sentimentScore < 0){
@@ -30,7 +26,7 @@ function tweetController($http, $scope) {
     } else if(sentimentScore > 0) {
       self.posArray.push(tweet)
     }
-    
+
     $scope.$apply()
 
   });
