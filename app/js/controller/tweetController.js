@@ -18,41 +18,25 @@ function tweetController($scope, $http, $timeout) {
   socket.on('tweet', function(tweet) {
 
     $scope.data.push(tweet.sentiment.score);    
-    // $scope.sentimentScore = $scope.data;
-    console.log(tweet.tweetText)
+    $scope.sentimentScore = $scope.data;
+    // console.log(tweet.tweetText)
+    $scope.twitterText = tweet.tweetText
 
     $scope.labels.push(tweet.sentiment.sentiment);
-    // $scope.sentimentAnalysis = $scope.labels;
+    $scope.sentimentAnalysis = $scope.labels;
 
     $scope.$apply()
-
-    var sentimentScores = $scope.data
-
-    for(var i = 0; i < sentimentScores.length; i ++){
-
-      var average = (Math.abs(sentimentScores[i]) * 10) / sentimentScores.length;
-      console.log(average)
-
-    }
   });
+    // var sentimentScores = $scope.data
 
-
-
-
-
-    // this is looping over the array x number of times so is duplicating entries
-    // for(var i = 0; i < $scope.label.length; i++){
-    //   if($scope.label[i] === "positive"){
-
-    //     $scope.positiveData.push($scope.label[i])
-    //     console.log($scope.positiveData)
-
-    //   } else if($scope.label[i] === "negative"){
-
-    //     $scope.negativeData.push($scope.label[i])
-    //     console.log($scope.negativeData)
-    //   }
+    // var average = 0
+    // for(var i = 0; i < sentimentScores.length; i ++){
+    //   average += (Math.abs(sentimentScores[i]) * 10)
+    //   var av = average / sentimentScores.length
+    //   console.log(av)
     // }
+
+
 
 
   //if the value of scope.data is neg push in to one array, if neg push in to other
