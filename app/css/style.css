@@ -1,5 +1,195 @@
 body{
-  background-color: black;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
   font-family: 'Lato', sans-serif;
 }
+.head{
+  width: 10%;
+}
+#header{
+  text-align: center;
+}
+/*@-webkit-keyframes left {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+}
+@keyframes left {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+}
+.left {
+  -webkit-animation: left 2s linear infinite;
+  -moz-animation: left 2s linear infinite;
+  -ms-animation: left 2s linear infinite;
+  -o-animation: left 2s linear infinite;
+  animation: left 2s linear infinite;
+}*/
+
+#positive-cats{
+  margin: 0;
+}
+
+#negative-cats{
+  margin: 0;
+}
+
+.cat-div{
+  display: inline-block;
+  width:45%;
+  height:500px;
+  border: 1px;
+  overflow: scroll;
+  position: relative;
+}
+
+.cat{
+  width: 100px;
+  height: 100px;
+}
+
+ul {
+  column-count: 2;
+  column-gap: 0;
+}
+
+li {
+  display: inline-block;
+}
+
+#tweet-text{
+  position: absolute;
+  color: steelblue;
+  z-index: 2;
+  background-color: azure;
+}
+
+@-webkit-keyframes grumpy /* Safari and Chrome */ {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grumpy {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.grumpy {
+  /*background: url(../public/images/grumpy-reaction.png);*/
+  -webkit-animation: grumpy 2s linear infinite;
+  -moz-animation: grumpy 2s linear infinite;
+  -ms-animation: grumpy 2s linear infinite;
+  -o-animation: grumpy 2s linear infinite;
+  animation: grumpy 2s linear infinite;
+}
+
+@-webkit-keyframes happy /* Safari and Chrome */ {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes happy {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.happy {
+  /*background: url(../public/images/happy-reaction.png);*/
+  -webkit-animation: happy 2s linear infinite;
+  -moz-animation: happy 2s linear infinite;
+  -ms-animation: happy 2s linear infinite;
+  -o-animation: happy 2s linear infinite;
+  animation: happy 2s linear infinite;
+}
+
+h6 {
+  background-color: black;
+  display: inline;
+  font-size: 20px;
+  margin: 30px;
+  color: white;
+  padding: 10px;
+}
+
+/*.today {
+  display: inline;
+  width: 100px;
+  border: 1px solid black;
+}*/
+
+/*#sad-rate {
+  display: inline-block;
+  width: 100px;
+  border: 1px solid black;
+}*/

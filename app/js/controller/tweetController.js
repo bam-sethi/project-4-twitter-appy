@@ -1,50 +1,61 @@
-angular.module('tweetApp', ['chart.js'])
+angular.module('tweetApp', [])
   .controller('tweetController', tweetController)
 
 // tweetController.$inject = ['socket'];
 
-function tweetController($scope, $http, $timeout) {
+function tweetController($http, $scope) {
 
   var self = this;
-  self.title = "Twitterappy";
-
   var socket = io('http://localhost:3000');
 
-  $scope.data = []
-  $scope.labels = []
-  // $scope.positiveData = []
-  // $scope.negativeData = []
+  self.negArray = [];
+  self.posArray = [];
+  self.sentimentArray = [];
 
-  socket.on('tweet', function(tweet) {
+  socket.on('tweet', function(tweet){
 
-    $scope.data.push(tweet.sentiment.score);    
-    $scope.sentimentScore = $scope.data;
-    // console.log(tweet.tweetText)
-    $scope.twitterText = tweet.tweetText
+    var sentimentObject = tweet;
+    self.sentimentArray.push(sentimentObject);
+    console.log(self.sentimentArray);
 
-    $scope.labels.push(tweet.sentiment.sentiment);
-    $scope.sentimentAnalysis = $scope.labels;
+    var sentimentScore = tweet.sentiment.score;  
+
+    if(sentimentScore < 0){
+      self.negArray.push(tweet);
+    } else if(sentimentScore > 0){
+      self.posArray.push(tweet);
+    };
+
+    $scope.expandTweet = function(tweet){
+      tweet.showTweet = !tweet.showTweet;
+      for (var i = 0; i < self.negArray.length; i++){
+        var currentTweet = self.negArray[i];
+        if (currentTweet != tweet){
+          currentTweet.showTweet = false;
+        }; 
+      };
+    };
+
+    $scope.expandPosTweet = function(tweeto){
+      tweeto.showPosTweet = !tweeto.showPosTweet;
+      for (var i = 0; i < self.posArray.length; i++){
+        var thisTweet = self.posArray[i];
+        if (thisTweet != tweeto){
+          thisTweet.showPosTweet = false;
+        }; 
+      };
+    };
+
+    self.negativity = self.negArray.length
+    self.postivity = self.posArray.length
+
+    // if(self.negArray.length > self.posArray.length){
+    //   console.log("today you are:" + self.negArray.length + "miserables")
+    // } else if(self.posArray.length > self.negArray.length) {
+    //   console.log("goodvibes" + self.posArray.length)
+    // }
 
     $scope.$apply()
   });
-    // var sentimentScores = $scope.data
-
-    // var average = 0
-    // for(var i = 0; i < sentimentScores.length; i ++){
-    //   average += (Math.abs(sentimentScores[i]) * 10)
-    //   var av = average / sentimentScores.length
-    //   console.log(av)
-    // }
-
-
-
-
-  //if the value of scope.data is neg push in to one array, if neg push in to other
-
-  //need to basically do this, push the score in to the data array that chart js requires
-  //and push the label in, can i do this as an object
-  //can i make the data that chart recieves an object
-  //where does chart js begin and where does angular-chart-js begin?
-
-}
+};
 

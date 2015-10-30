@@ -1,1 +1,1 @@
-angular.module('tweetApp', ["chart.js"])
+angular.module('tweetApp', [])
