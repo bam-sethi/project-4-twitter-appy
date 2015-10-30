@@ -8,6 +8,10 @@ body{
 }
 #header{
   text-align: center;
+  font-size: 100px;
+}
+.doom{
+  font-size: 115px;
 }
 /*@-webkit-keyframes left {
   from {
@@ -85,6 +89,7 @@ li {
   color: steelblue;
   z-index: 2;
   background-color: azure;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 @-webkit-keyframes grumpy /* Safari and Chrome */ {
